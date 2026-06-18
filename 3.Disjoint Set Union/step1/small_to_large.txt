@@ -1,0 +1,42 @@
+Approach 2: Small-to-Large (Linked Lists)
+
+Idea: 
+
+Always merge smaller set into larger set.
+
+Template: 
+if(size[a] > size[b]) {
+    swap(a, b);
+}
+
+for(x in set[a]) {
+    leader[x] = b;
+}
+
+size[b] += size[a];
+
+Dry Run
+
+Suppose:
+
+A={1}
+B={2,3}
+
+union(A,B)
+
+Move:
+
+1 → B
+
+New set:
+
+{1,2,3}
+
+Each element changes leader at most:
+
+log n times
+Complexity
+find  = O(1)
+union = O(log n) amortized
+
+Better.

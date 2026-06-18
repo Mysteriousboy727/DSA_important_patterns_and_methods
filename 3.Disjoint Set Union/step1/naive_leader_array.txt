@@ -1,0 +1,56 @@
+Approach 1: Naive Leader Array
+
+Idea
+
+Store:
+
+p[x] = leader of x
+
+Initially:
+
+Index:  1 2 3 4 5
+p[]  :  1 2 3 4 5
+
+int[] p = new int[n + 1];
+
+void init() {
+    for (int i = 1; i <= n; i++) {
+        p[i] = i;
+    }
+}
+
+int find(int a) {
+    return p[a];
+}
+
+void union(int a, int b) {
+    int leaderA = p[a];
+    int leaderB = p[b];
+
+    for (int i = 1; i <= n; i++) {
+        if (p[i] == leaderA) {
+            p[i] = leaderB;
+        }
+    }
+}
+
+Dry Run
+
+Initially:
+
+p = [1,2,3,4,5]
+
+union(1,2)
+
+p = [2,2,3,4,5]
+
+union(2,4)
+
+p = [4,4,3,4,5]
+
+find(1)
+
+4
+Complexity
+find  = O(1)
+union = O(n)

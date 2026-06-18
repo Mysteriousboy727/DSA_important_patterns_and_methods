@@ -1,0 +1,52 @@
+Approach 3: Tree DSU
+Idea
+
+Store parent.
+
+Initially:
+
+parent[i] = i
+
+Each set is a tree.
+
+Template:
+int find(int a) {
+    while (a != parent[a]) {
+        a = parent[a];
+    }
+    return a;
+}
+
+void union(int a, int b) {
+    a = find(a);
+    b = find(b);
+
+    parent[a] = b;
+}
+
+Dry Run
+
+Initially:
+
+1 2 3 4 5
+
+union(1,2)
+
+1 → 2
+
+union(2,4)
+
+1 → 2 → 4
+
+find(1)
+
+1→2→4
+
+Answer: 4
+Complexity
+
+Worst case:
+
+1→2→3→4→5
+
+find = O(n)

@@ -1,0 +1,55 @@
+Approach 5: Path Compression
+Idea
+
+During find:
+
+Make everyone directly point to root.
+
+Template
+int find(int a) {
+    if (parent[a] != a) {
+        parent[a] = find(parent[a]);
+    }
+
+    return parent[a];
+}
+
+One-line version:
+
+return parent[a] =
+       (parent[a] == a ? a : find(parent[a]));
+Dry Run
+
+Before:
+
+5
+↑
+4
+↑
+3
+↑
+2
+↑
+1
+
+find(1)
+
+Visits:
+
+1→2→3→4→5
+
+After compression:
+
+    5
+ ↑ ↑ ↑ ↑
+4 3 2 1
+
+Next:
+
+find(1)
+
+becomes:
+
+1→5
+
+Very fast.
