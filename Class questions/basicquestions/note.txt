@@ -1,0 +1,4 @@
+number logic-properties
+
+1.numbers are iterable
+2.numbers do not have len functions
